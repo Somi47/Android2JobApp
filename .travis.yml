@@ -17,7 +17,9 @@ android:
 before_install:
   - yes | sdkmanager "platforms;android-29"
 
-script: ./gradlew :app:build
+script:
+  - cd app
+  - ./gradlew :app:build
 
 env:
   global:
