@@ -4,8 +4,9 @@ import com.example.android2jobapp.model.Job
 import com.example.android2jobapp.ui.Presenter
 import com.example.android2jobapp.ui.main.MainPresenter
 import com.example.android2jobapp.ui.main.MainScreen
+import javax.inject.Inject
 
-object JobViewPresenter : Presenter<JobViewScreen>() {
+class JobViewPresenter @Inject constructor() : Presenter<JobViewScreen>() {
     override fun attachScreen(screen: JobViewScreen) {
         super.attachScreen(screen)
     }
@@ -14,6 +15,6 @@ object JobViewPresenter : Presenter<JobViewScreen>() {
     }
     fun refreshJob() {
         var job: Job = Job()
-        JobViewPresenter.screen?.showJob(job);
+        screen?.showJob(job);
     }
 }

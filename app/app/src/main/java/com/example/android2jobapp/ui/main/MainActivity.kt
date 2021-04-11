@@ -5,8 +5,12 @@ import android.os.Bundle
 import android.widget.Toast
 import com.example.android2jobapp.R
 import com.example.android2jobapp.model.Job
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), MainScreen {
+    @Inject
+    lateinit var mainPresenter: MainPresenter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -14,11 +18,11 @@ class MainActivity : AppCompatActivity(), MainScreen {
 
     override fun onStart() {
         super.onStart()
-        MainPresenter.attachScreen(this)
+        mainPresenter.attachScreen(this)
     }
     override fun onStop() {
         super.onStop()
-        MainPresenter.detachScreen()
+        mainPresenter.detachScreen()
     }
 
     override fun showJobs(result: List<Job>) {

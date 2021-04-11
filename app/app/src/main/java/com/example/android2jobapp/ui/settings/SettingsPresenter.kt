@@ -2,8 +2,9 @@ package com.example.android2jobapp.ui.settings
 
 import com.example.android2jobapp.model.Settings
 import com.example.android2jobapp.ui.Presenter
+import javax.inject.Inject
 
-object SettingsPresenter : Presenter<SettingsScreen>() {
+class SettingsPresenter @Inject constructor() : Presenter<SettingsScreen>() {
     override fun attachScreen(screen: SettingsScreen) {
         super.attachScreen(screen)
     }
@@ -12,6 +13,6 @@ object SettingsPresenter : Presenter<SettingsScreen>() {
     }
     fun refreshSettings() {
         var settings: Settings = Settings()
-        SettingsPresenter.screen?.showSettings(settings);
+        screen?.showSettings(settings);
     }
 }

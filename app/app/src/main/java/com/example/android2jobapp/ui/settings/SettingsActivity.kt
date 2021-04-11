@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.android2jobapp.R
-import com.example.android2jobapp.model.Job
 import com.example.android2jobapp.model.Settings
+import javax.inject.Inject
 
 class SettingsActivity : AppCompatActivity(), SettingsScreen {
+    @Inject
+    lateinit var settingsPresenter: SettingsPresenter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
@@ -15,11 +18,11 @@ class SettingsActivity : AppCompatActivity(), SettingsScreen {
 
     override fun onStart() {
         super.onStart()
-        SettingsPresenter.attachScreen(this)
+        settingsPresenter.attachScreen(this)
     }
     override fun onStop() {
         super.onStop()
-        SettingsPresenter.detachScreen()
+        settingsPresenter.detachScreen()
     }
 
     override fun showSettings(result: Settings) {
