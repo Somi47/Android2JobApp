@@ -6,18 +6,12 @@ import io.swagger.annotations.ApiModelProperty
 import java.util.*
 
 @ApiModel(description = "")
-class Job {
+class Application {
     /**
      */
     @get:ApiModelProperty(value = "")
-    @SerializedName("company")
-    var company: String? = null
-
-    /**
-     */
-    @get:ApiModelProperty(value = "")
-    @SerializedName("description")
-    var description: String? = null
+    @SerializedName("email")
+    var email: String? = null
 
     /**
      */
@@ -28,14 +22,8 @@ class Job {
     /**
      */
     @get:ApiModelProperty(value = "")
-    @SerializedName("location")
-    var location: String? = null
-
-    /**
-     */
-    @get:ApiModelProperty(value = "")
-    @SerializedName("title")
-    var title: String? = null
+    @SerializedName("jobid")
+    var jobid: String? = null
 
     override fun equals(o: Any?): Boolean {
         if (this === o) {
@@ -44,26 +32,22 @@ class Job {
         if (o == null || javaClass != o.javaClass) {
             return false
         }
-        val job = o as Job
-        return company == job.company &&
-                description == job.description &&
-                id == job.id &&
-                location == job.location &&
-                title == job.title
+        val application = o as Application
+        return email == application.email &&
+                id == application.id &&
+                jobid == application.jobid
     }
 
     override fun hashCode(): Int {
-        return Objects.hash(company, description, id, location, title)
+        return Objects.hash(email, id, jobid)
     }
 
     override fun toString(): String {
         val sb = StringBuilder()
-        sb.append("class Job {\n")
-        sb.append("    company: ").append(toIndentedString(company)).append("\n")
-        sb.append("    description: ").append(toIndentedString(description)).append("\n")
+        sb.append("class Application {\n")
+        sb.append("    email: ").append(toIndentedString(email)).append("\n")
         sb.append("    id: ").append(toIndentedString(id)).append("\n")
-        sb.append("    location: ").append(toIndentedString(location)).append("\n")
-        sb.append("    title: ").append(toIndentedString(title)).append("\n")
+        sb.append("    jobid: ").append(toIndentedString(jobid)).append("\n")
         sb.append("}")
         return sb.toString()
     }
