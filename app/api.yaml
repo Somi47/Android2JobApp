@@ -1,0 +1,147 @@
+openapi: 3.0.0
+info:
+  title: jobs.github
+  version: '1.0'
+servers:
+  - url: 'https://jobs.github.com/'
+paths:
+  '/positions/{id}.json':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Returns the position of the ID.
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+              examples:
+                example-1:
+                  value: {}
+            application/xml:
+              schema:
+                type: object
+                properties: {}
+      operationId: get-positions-id
+      parameters: []
+      description: Returns the position of the ID.
+  /positions.json:
+    get:
+      summary: Returns all positions.
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Job'
+      operationId: get-positions.json?search=node
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: search
+          description: android
+      description: Returns all positions.
+    parameters: []
+  '/application/{id}':
+    get:
+      summary: Returns the application of the ID.
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Application'
+      operationId: get-application
+      description: Returns the application of the ID.
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    put:
+      summary: Updates the application of the ID.
+      operationId: put-application-id
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Application'
+      description: Updates the application of the ID.
+    delete:
+      summary: Deletes the application of the ID.
+      operationId: delete-application-id
+      responses:
+        '200':
+          description: OK
+      description: Deletes the application of the ID.
+  /application:
+    get:
+      summary: Returns all applications.
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Application'
+      operationId: get-applications
+      description: Returns all applications.
+    post:
+      summary: Creates a new application.
+      operationId: post-application
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Application'
+      description: Creates a new application.
+components:
+  schemas:
+    Job:
+      title: Job
+      type: object
+      properties:
+        id:
+          type: string
+        company:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        location:
+          type: string
+    Application:
+      title: Application
+      type: object
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+        jobid:
+          type: string
