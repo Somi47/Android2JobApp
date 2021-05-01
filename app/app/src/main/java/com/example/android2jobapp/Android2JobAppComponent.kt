@@ -5,6 +5,7 @@ import com.example.android2jobapp.interactor.InteractorModule
 import com.example.android2jobapp.ui.UIModule
 import com.example.android2jobapp.ui.jobview.JobViewActivity
 import com.example.android2jobapp.ui.main.MainActivity
+import com.example.android2jobapp.ui.settings.SettingsActivity
 import dagger.Component
 import javax.inject.Singleton
 
@@ -13,4 +14,5 @@ import javax.inject.Singleton
 interface Android2JobAppComponent {
     fun inject(mainActivity: MainActivity)
     fun inject(jobViewActivity: JobViewActivity)
+    fun inject(settingsActivity: SettingsActivity)
 }

@@ -4,6 +4,7 @@ import android.content.Context
 import com.example.android2jobapp.interactor.JobInteractor
 import com.example.android2jobapp.ui.jobview.JobViewPresenter
 import com.example.android2jobapp.ui.main.MainPresenter
+import com.example.android2jobapp.ui.settings.SettingsPresenter
 import dagger.Module
 import dagger.Provides
 import java.util.concurrent.Executor
@@ -22,6 +23,10 @@ class UIModule(private val context: Context) {
     @Provides
     @Singleton
     fun jobViewPresenter(executor: Executor, jobInteractor: JobInteractor) = JobViewPresenter(executor, jobInteractor)
+
+    @Provides
+    @Singleton
+    fun settingsPresenter() = SettingsPresenter()
 
     @Provides
     @Singleton

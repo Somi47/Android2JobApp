@@ -15,6 +15,8 @@ class JobViewActivity : AppCompatActivity(), JobViewScreen {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_job_view)
+        setSupportActionBar(findViewById(R.id.my_toolbar))
+        supportActionBar?.setHomeButtonEnabled(true);
         injector.inject(this)
         val id = intent.getStringExtra("id")
     }

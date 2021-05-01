@@ -2,8 +2,8 @@ package com.example.android2jobapp.ui.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
 import android.view.View
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -11,6 +11,7 @@ import com.example.android2jobapp.R
 import com.example.android2jobapp.injector
 import com.example.android2jobapp.model.Job
 import com.example.android2jobapp.ui.jobview.JobViewActivity
+import com.example.android2jobapp.ui.settings.SettingsActivity
 import javax.inject.Inject
 
 
@@ -22,6 +23,13 @@ class MainActivity : AppCompatActivity(), MainScreen, MyRecyclerViewAdapter.Item
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(findViewById(R.id.my_toolbar))
+        val buttonSettings: ImageButton = findViewById<View>(R.id.ib_settings) as ImageButton
+        buttonSettings.setOnClickListener {
+            val intent = Intent(this@MainActivity, SettingsActivity::class.java)
+            startActivity(intent)
+        }
+
         injector.inject(this)
     }
 
