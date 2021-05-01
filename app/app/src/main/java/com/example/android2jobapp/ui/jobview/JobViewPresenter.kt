@@ -1,9 +1,7 @@
 package com.example.android2jobapp.ui.jobview
 
-import com.example.android2jobapp.interactor.GetJobEvent
-import com.example.android2jobapp.interactor.GetJobsEvent
-import com.example.android2jobapp.interactor.JobInteractor
-import com.example.android2jobapp.model.Job
+import com.example.android2jobapp.interactor.job.GetJobEvent
+import com.example.android2jobapp.interactor.job.JobInteractor
 import com.example.android2jobapp.ui.Presenter
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe

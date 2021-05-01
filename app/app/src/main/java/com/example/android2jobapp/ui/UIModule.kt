@@ -1,7 +1,7 @@
 package com.example.android2jobapp.ui
 
 import android.content.Context
-import com.example.android2jobapp.interactor.JobInteractor
+import com.example.android2jobapp.interactor.job.JobInteractor
 import com.example.android2jobapp.ui.jobview.JobViewPresenter
 import com.example.android2jobapp.ui.main.MainPresenter
 import dagger.Module

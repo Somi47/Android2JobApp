@@ -1,5 +1,6 @@
 package com.example.android2jobapp.client.api
 
+import com.example.android2jobapp.client.api.mock.MockApplicationApi
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -24,5 +25,11 @@ class NetworkModule {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
         return retrofit.create(JobApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideApplicationApi(client: OkHttpClient): ApplicationApi {
+        return MockApplicationApi()
     }
 }

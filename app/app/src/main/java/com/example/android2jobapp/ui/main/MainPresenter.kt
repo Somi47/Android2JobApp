@@ -1,9 +1,9 @@
 package com.example.android2jobapp.ui.main
 
-import com.example.android2jobapp.interactor.GetJobsEvent
+import com.example.android2jobapp.interactor.job.GetJobsEvent
 import com.example.android2jobapp.model.Job
 import com.example.android2jobapp.ui.Presenter
-import com.example.android2jobapp.interactor.JobInteractor
+import com.example.android2jobapp.interactor.job.JobInteractor
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode

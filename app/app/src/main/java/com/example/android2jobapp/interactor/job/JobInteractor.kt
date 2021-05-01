@@ -1,7 +1,6 @@
-package com.example.android2jobapp.interactor
+package com.example.android2jobapp.interactor.job
 
 import com.example.android2jobapp.client.api.JobApi
-import com.example.android2jobapp.model.Job
 import org.greenrobot.eventbus.EventBus
 import javax.inject.Inject
 

@@ -30,9 +30,10 @@
         android:padding="5dp"/>
 
     <Button
+        android:id="@+id/btApply"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Apply"
+        android:text="@string/apply"
         android:layout_gravity="center"/>
 
     <ScrollView
