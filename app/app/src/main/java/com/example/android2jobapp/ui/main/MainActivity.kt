@@ -11,7 +11,7 @@ import com.example.android2jobapp.R
 import com.example.android2jobapp.injector
 import com.example.android2jobapp.model.Job
 import com.example.android2jobapp.ui.jobview.JobViewActivity
-import com.example.android2jobapp.ui.settings.SettingsActivity
+import com.example.android2jobapp.ui.settings.PreferenceActivity
 import javax.inject.Inject
 
 
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity(), MainScreen, MyRecyclerViewAdapter.Item
         setSupportActionBar(findViewById(R.id.my_toolbar))
         val buttonSettings: ImageButton = findViewById<View>(R.id.ib_settings) as ImageButton
         buttonSettings.setOnClickListener {
-            val intent = Intent(this@MainActivity, SettingsActivity::class.java)
+            val intent = Intent(this@MainActivity, PreferenceActivity::class.java)
             startActivity(intent)
         }
 
