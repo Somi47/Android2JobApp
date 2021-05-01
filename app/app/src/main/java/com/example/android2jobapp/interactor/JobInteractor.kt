@@ -24,4 +24,23 @@ class JobInteractor @Inject constructor(private var jobApi: JobApi) {
             EventBus.getDefault().post(event)
         }
     }
+
+    fun getJob(id: String)
+    {
+        val event = GetJobEvent()
+
+        try {
+            val jobsCall = jobApi.getJobId(id)
+            val response = jobsCall.execute()
+            if (response.code() != 200) {
+                throw Exception("Result code is not 200")
+            }
+            event.code = response.code()
+            event.job = response.body()
+            EventBus.getDefault().post(event)
+        } catch (e: Exception) {
+            event.throwable = e
+            EventBus.getDefault().post(event)
+        }
+    }
 }
