@@ -13,7 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Android2JobApp">
         <activity android:name=".ui.settings.SettingsActivity"></activity>
-        <activity android:name=".ui.jobview.JobViewActivity" />
+        <activity android:name=".ui.jobview.JobViewActivity"
+            android:parentActivityName=".ui.main.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.main.MainActivity" />
+        </activity>
         <activity android:name=".ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

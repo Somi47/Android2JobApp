@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.android2jobapp.R
+import com.example.android2jobapp.injector
 import com.example.android2jobapp.model.Job
 import javax.inject.Inject
 
@@ -14,6 +15,8 @@ class JobViewActivity : AppCompatActivity(), JobViewScreen {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_job_view)
+        injector.inject(this)
+        val id = intent.getStringExtra("id")
     }
 
     override fun onStart() {

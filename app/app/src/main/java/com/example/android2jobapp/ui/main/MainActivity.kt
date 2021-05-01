@@ -1,14 +1,16 @@
 package com.example.android2jobapp.ui.main
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android2jobapp.R
 import com.example.android2jobapp.injector
 import com.example.android2jobapp.model.Job
+import com.example.android2jobapp.ui.jobview.JobViewActivity
 import javax.inject.Inject
 
 
@@ -42,10 +44,15 @@ class MainActivity : AppCompatActivity(), MainScreen, MyRecyclerViewAdapter.Item
     }
 
     override fun onItemClick(view: View?, position: Int) {
-        Toast.makeText(
+        /*Toast.makeText(
             this,
             "You clicked " + adapter?.getItem(position).toString() + " on row number " + position,
             Toast.LENGTH_SHORT
-        ).show()
+        ).show()*/
+
+        val intent = Intent(this, JobViewActivity::class.java).apply {
+            putExtra("id", adapter?.getItem(position)?.id)
+        }
+        startActivity(intent)
     }
 }
