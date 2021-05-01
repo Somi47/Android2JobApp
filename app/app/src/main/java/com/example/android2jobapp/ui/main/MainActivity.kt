@@ -1,17 +1,21 @@
 package com.example.android2jobapp.ui.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.android2jobapp.R
 import com.example.android2jobapp.injector
 import com.example.android2jobapp.model.Job
-import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), MainScreen {
+
+class MainActivity : AppCompatActivity(), MainScreen, MyRecyclerViewAdapter.ItemClickListener {
     @Inject
     lateinit var mainPresenter: MainPresenter
+    var adapter: MyRecyclerViewAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,12 +34,18 @@ class MainActivity : AppCompatActivity(), MainScreen {
     }
 
     override fun showJobs(result: List<Job>) {
-        /*Toast.makeText(
-                this,
-                "Result: $result",
-                Toast.LENGTH_LONG
-        )*/
-        HelloText.text = result.first().title
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewJobs)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        adapter = MyRecyclerViewAdapter(this, result)
+        adapter!!.setClickListener(this)
+        recyclerView.adapter = adapter
     }
 
+    override fun onItemClick(view: View?, position: Int) {
+        Toast.makeText(
+            this,
+            "You clicked " + adapter?.getItem(position).toString() + " on row number " + position,
+            Toast.LENGTH_SHORT
+        ).show()
+    }
 }
