@@ -5,7 +5,7 @@ import com.example.android2jobapp.model.Job
 import retrofit2.Call
 
 class MockJobApi : JobApi {
-    override fun getJobs(): Call<Array<Job>> {
+    override fun getJobs(search: String): Call<Array<Job>> {
         TODO("Not yet implemented")
     }
 

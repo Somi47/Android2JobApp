@@ -11,7 +11,7 @@ class JobInteractor @Inject constructor(private var jobApi: JobApi) {
         val event = GetJobsEvent()
 
         try {
-            val jobsCall = jobApi.getJobs()
+            val jobsCall = jobApi.getJobs("android")
             val response = jobsCall.execute()
             if (response.code() != 200) {
                 throw Exception("Result code is not 200")
