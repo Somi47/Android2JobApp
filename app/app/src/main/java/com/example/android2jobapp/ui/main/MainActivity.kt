@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity(), MainScreen, MyRecyclerViewAdapter.Item
         mainPresenter.detachScreen()
     }
 
-    override fun showJobs(result: List<Job>) {
+    override fun showJobs(result: List<Job>?) {
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewJobs)
         recyclerView.layoutManager = LinearLayoutManager(this)
         adapter = MyRecyclerViewAdapter(this, result)
