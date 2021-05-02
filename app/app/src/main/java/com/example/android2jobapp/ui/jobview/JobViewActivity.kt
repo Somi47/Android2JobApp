@@ -42,21 +42,7 @@ class JobViewActivity : AppCompatActivity(), JobViewScreen {
         AppDatabase.createInstance(this@JobViewActivity)
 
         buttonApply?.setOnClickListener {
-            val dbThread = Thread {
-                if(appliedState)
-                {
-                    val application = AppDatabase.getInstance().applicationDao().getApplicationForJobId(id)!!
-                    AppDatabase.getInstance().applicationDao().deleteApplication(application)
-                }
-                else
-                {
-                    val application = ApplicationEntity(0, "", id)
-                    AppDatabase.getInstance().applicationDao().insertApplication(application)
-                }
-
-                jobViewPresenter.refreshApplicationStatus(id)
-            }
-            dbThread.start()
+            jobViewPresenter.setApplicationStatus(id, !appliedState)
         }
     }
 

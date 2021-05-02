@@ -32,7 +32,15 @@ class JobViewPresenter @Inject constructor(
     }
 
     fun refreshApplicationStatus(jobId: String) {
-        applicationInteractor.getApplicationStatus(jobId)
+        executor.execute {
+            applicationInteractor.getApplicationStatus(jobId)
+        }
+    }
+
+    fun setApplicationStatus(jobId: String, applied: Boolean) {
+        executor.execute {
+            applicationInteractor.setApplicationStatus(jobId, applied)
+        }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
