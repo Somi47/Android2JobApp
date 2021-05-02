@@ -17,7 +17,7 @@ class Application {
      */
     @get:ApiModelProperty(value = "")
     @SerializedName("id")
-    var id: String? = null
+    var id: Int? = null
 
     /**
      */

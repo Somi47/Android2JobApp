@@ -11,7 +11,7 @@ interface ApplicationApi {
     @GET("application/{id}")
     fun getApplicationId(
             @Path("id") id: String
-    ): Call<Application>
+    ): Call<Application?>
 
     @POST("application")
     fun postApplication(
