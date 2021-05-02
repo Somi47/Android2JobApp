@@ -15,9 +15,11 @@ import org.junit.runner.RunWith
 import org.mockito.Mockito
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.Shadows
+import org.robolectric.annotation.Config
 import javax.inject.Inject
 
 @RunWith(RobolectricTestRunner::class)
+@Config(sdk = [Config.OLDEST_SDK])
 class JobViewTest {
     @Inject
     lateinit var jobViewPresenter: JobViewPresenter

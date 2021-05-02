@@ -20,9 +20,11 @@ import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.Shadows.shadowOf
+import org.robolectric.annotation.Config
 import javax.inject.Inject
 
 @RunWith(RobolectricTestRunner::class)
+@Config(sdk = [Config.OLDEST_SDK])
 class MainTest {
     @Inject
     lateinit var mainPresenter: MainPresenter
