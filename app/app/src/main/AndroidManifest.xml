@@ -2,15 +2,26 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.android2jobapp">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name=".Android2JobApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Android2JobApp">
-        <activity android:name=".ui.settings.SettingsActivity"></activity>
-        <activity android:name=".ui.jobview.JobViewActivity" />
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity
+            android:name=".ui.settings.PreferenceActivity"
+            android:label="@string/title_activity_preference"></activity>
+        <activity
+            android:name=".ui.jobview.JobViewActivity"
+            android:parentActivityName=".ui.main.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.main.MainActivity" />
+        </activity>
         <activity android:name=".ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
