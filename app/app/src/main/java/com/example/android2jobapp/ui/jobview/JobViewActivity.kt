@@ -24,6 +24,8 @@ class JobViewActivity : AppCompatActivity(), JobViewScreen {
     var tvJobTitle : TextView? = null
     var tvJobCompany : TextView? = null
     var tvJobDesc : TextView? = null
+    var buttonApply: Button? = null
+    var appliedState: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,22 +38,23 @@ class JobViewActivity : AppCompatActivity(), JobViewScreen {
         tvJobTitle = findViewById(R.id.tvJobTitle)
         tvJobCompany = findViewById(R.id.tvJobCompany)
         tvJobDesc = findViewById(R.id.tvJobDesc)
+        buttonApply = findViewById(R.id.btApply)
+        AppDatabase.createInstance(this@JobViewActivity)
 
-        val buttonApply: Button = findViewById<View>(R.id.btApply) as Button
-
-        val dbThread = Thread {
-            val application = AppDatabase.getInstance(this@JobViewActivity).applicationDao().getApplicationForJobId(id)
-            runOnUiThread {
-                if(application!=null)
-                    buttonApply.text = "Undo"
-            }
-        }
-        dbThread.start()
-
-        buttonApply.setOnClickListener {
-            val application = ApplicationEntity(0, "", id)
+        buttonApply?.setOnClickListener {
             val dbThread = Thread {
-                AppDatabase.getInstance(this@JobViewActivity).applicationDao().insertApplication(application)
+                if(appliedState)
+                {
+                    val application = AppDatabase.getInstance().applicationDao().getApplicationForJobId(id)!!
+                    AppDatabase.getInstance().applicationDao().deleteApplication(application)
+                }
+                else
+                {
+                    val application = ApplicationEntity(0, "", id)
+                    AppDatabase.getInstance().applicationDao().insertApplication(application)
+                }
+
+                jobViewPresenter.refreshApplicationStatus(id)
             }
             dbThread.start()
         }
@@ -61,6 +64,7 @@ class JobViewActivity : AppCompatActivity(), JobViewScreen {
         super.onStart()
         jobViewPresenter.attachScreen(this)
         jobViewPresenter.refreshJob(id)
+        jobViewPresenter.refreshApplicationStatus(id)
     }
     override fun onStop() {
         super.onStop()
@@ -71,5 +75,15 @@ class JobViewActivity : AppCompatActivity(), JobViewScreen {
         tvJobTitle?.text = result.title
         tvJobCompany?.text = result.company
         tvJobDesc?.text = result.description
+    }
+
+    override fun showApplicationStatus(applied: Boolean) {
+        runOnUiThread {
+            appliedState = applied
+            if (applied)
+                buttonApply?.text = "Undo"
+            else
+                buttonApply?.text = "Apply"
+        }
     }
 }
