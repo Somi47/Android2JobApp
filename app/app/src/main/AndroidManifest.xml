@@ -15,7 +15,6 @@
         <activity
             android:name=".ui.settings.PreferenceActivity"
             android:label="@string/title_activity_preference"></activity>
-        <activity android:name=".ui.settings.SettingsActivity" />
         <activity
             android:name=".ui.jobview.JobViewActivity"
             android:parentActivityName=".ui.main.MainActivity">
