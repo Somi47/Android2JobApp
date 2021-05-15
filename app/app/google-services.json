@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "238368364502",
+    "project_id": "android2jobapp",
+    "storage_bucket": "android2jobapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:238368364502:android:b0bb94a33405bd695bf677",
+        "android_client_info": {
+          "package_name": "com.example.android2jobapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "238368364502-luq7fvddob4pmkb2g3mg9756323vjskd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkfIjjrK9-NpnVf0C4a6FNxUgJCS1NR5s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "238368364502-luq7fvddob4pmkb2g3mg9756323vjskd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
